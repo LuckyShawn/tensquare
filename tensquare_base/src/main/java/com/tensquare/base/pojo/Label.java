@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @Description 标签实体类
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_label")
 @Data
-public class Label {
+public class Label implements Serializable {
     @Id
     private String id;//
     private String labelname;//标签名称
