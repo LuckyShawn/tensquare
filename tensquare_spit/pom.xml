@@ -3,15 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>tensquare_parent</artifactId>
         <groupId>com.tensquare</groupId>
+        <artifactId>tensquare_parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.tensquare</groupId>
-    <artifactId>tensquare_base</artifactId>
+    <artifactId>tensquare_spit</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>tensquare_base</name>
-    <description>Demo project for Spring Boot</description>
+    <name>tensquare_spit</name>
+    <description>tensquare_spit project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -20,28 +20,22 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tensquare</groupId>
+            <artifactId>tensquare_common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver</artifactId>
-            <version>3.6.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.tensquare</groupId>
-            <artifactId>tensquare_common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
