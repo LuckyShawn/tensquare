@@ -14,3 +14,6 @@ spring:
   redis:
     host: 47.107.183.79
     port: 6378
+  data:
+   mongodb:
+    host: 47.107.183.79

@@ -7,6 +7,7 @@ import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,6 +21,25 @@ import org.springframework.web.bind.annotation.*;
 public class SpitController {
     @Autowired
     private SpitService spitService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    /**
+     * 点赞
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/thumbup/{id}", method = RequestMethod.PUT)
+    public Result updateThumbup(@PathVariable String id){
+        String userid = "1013"; //模拟用户id
+        if(redisTemplate.opsForValue().get("thumbup_"+userid+"_"+id)!=null){
+            return new Result(false,StatusCode.REPERROR,"您已经点过赞了！");
+        }
+        redisTemplate.opsForValue().set("thumbup_"+userid+"_"+id,"thumbup");
+        spitService.updateThumbup(id);
+        return new Result(true, StatusCode.OK,"点赞成功");
+    }
 
     /**
      * 根据父节点查询并分页
