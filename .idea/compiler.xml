@@ -13,6 +13,7 @@
         <module name="tensquare_qa" />
         <module name="tensquare_recruit" />
         <module name="tensquare_spit" />
+        <module name="tensuqare_search" />
       </profile>
     </annotationProcessing>
   </component>
