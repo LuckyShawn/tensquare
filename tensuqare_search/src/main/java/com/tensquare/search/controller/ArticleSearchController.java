@@ -1,6 +1,5 @@
 package com.tensquare.search.controller;
 
-import ch.qos.logback.core.status.StatusUtil;
 import com.tensquare.search.pojo.Article;
 import com.tensquare.search.service.ArticleSearchService;
 import entity.PageResult;
