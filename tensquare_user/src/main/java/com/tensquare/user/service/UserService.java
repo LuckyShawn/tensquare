@@ -9,8 +9,12 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
+import javax.servlet.http.HttpServletRequest;
 
+import io.jsonwebtoken.Claims;
+import io.netty.util.internal.StringUtil;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,12 +22,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import util.IdWorker;
 
 import com.tensquare.user.dao.UserDao;
 import com.tensquare.user.pojo.User;
+import util.JwtUtil;
 
 /**
  * 服务层
@@ -44,6 +50,33 @@ public class UserService {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+
+
+    /**
+     * 根据手机号和密码查询用户 并匹配密码
+     * @param mobile
+     * @param password
+     * @return
+     */
+
+    public User findByMobileAndPassword(String mobile, String password){
+       User user = userDao.findByMobile(mobile);
+       if(bCryptPasswordEncoder.matches(password,user.getPassword())){
+           return user;
+       }else {
+           return null;
+       }
+    }
 
     /**
      * 发送短信验证码
@@ -87,6 +120,10 @@ public class UserService {
         }
         if (!syscode.equals(code)) {
             throw new RuntimeException("验证码输入不正确");
+        }
+        if(!StringUtils.isEmpty(user.getPassword())){
+            String password = bCryptPasswordEncoder.encode(user.getPassword());
+            user.setPassword(password);
         }
         user.setId(idWorker.nextId() + "");
         user.setFollowcount(0);//关注数
@@ -170,8 +207,27 @@ public class UserService {
      * @param id
      */
     public void deleteById(String id) {
+        //删除钱需要验证权限
+       String header = request.getHeader("Authorization");
+       if(StringUtils.isEmpty(header)){
+           throw new RuntimeException("权限不足");
+       }
+       if(!header.startsWith("shawn ")){
+           throw new RuntimeException("权限不足");
+       }
+       String token = header.substring(6);
+       try {
+           Claims claims = jwtUtil.parseJWT(token);
+           String roles = (String) claims.get("roles");
+           if(roles == null || !"admin".equals(roles)){
+               throw new RuntimeException("权限不足");
+           }
+       }catch (Exception e){
+           throw new RuntimeException("权限不足");
+       }
         userDao.deleteById(id);
     }
+
 
     /**
      * 动态条件构建

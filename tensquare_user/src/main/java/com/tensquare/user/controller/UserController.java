@@ -1,6 +1,7 @@
 package com.tensquare.user.controller;
 import java.util.Map;
 
+import entity.ResultEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,6 +30,19 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * 用户登陆
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = "/login",method = RequestMethod.POST)
+	public Result login(@RequestBody Map<String,String> map){
+		User user = userService.findByMobileAndPassword(map.get("mobile"),map.get("password"));
+		if(user == null){
+			return new Result(false,ResultEnum.LOGIN_ERROR.getCode(),ResultEnum.LOGIN_ERROR.getMessage());
+		}
+		return new Result(true,ResultEnum.OK.getCode(),ResultEnum.OK.getMessage());
+	}
 
 	/**
 	 * 发送短信验证码

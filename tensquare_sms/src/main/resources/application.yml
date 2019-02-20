@@ -1,6 +1,8 @@
 spring:
   rabbitmq:
     host: 47.107.183.79
+    password: shawn
+    username: shawn
   application:
     name: tensquare_sms
 server:

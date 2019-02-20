@@ -1,7 +1,9 @@
 package com.tensquare.user.controller;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import entity.ResultEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +19,8 @@ import com.tensquare.user.service.AdminService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import util.JwtUtil;
+
 /**
  * 控制器层
  * @author Administrator
@@ -29,8 +33,25 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-	
-	
+
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	@RequestMapping(value = "/login",method = RequestMethod.POST)
+	public Result login(@RequestBody Map<String,String> map){
+		Admin admin = adminService.findByLoginnameAndPassword(map.get("loginname"),map.get("password"));
+		if(admin == null){
+			return new Result(true,ResultEnum.LOGIN_ERROR.getCode(),ResultEnum.LOGIN_ERROR.getMessage());
+		}
+		//此处编码，让前后端进行通信，采用JWT
+		String token = jwtUtil.createJWT(admin.getId(),admin.getLoginname(),"admin");
+		map = new HashMap<>();
+		map.put("token",token);
+		map.put("roles","admin");
+		map.put("name",admin.getLoginname());
+		return new Result(true,StatusCode.OK,"登录成功",map);
+	}
+
 	/**
 	 * 查询全部数据
 	 * @return
