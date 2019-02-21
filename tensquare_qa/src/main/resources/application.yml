@@ -11,3 +11,7 @@ spring:
   jpa: 
     database: MySQL
     show-sql: true
+jwt:
+ config:
+  key: shawn
+  ttl: 3600000

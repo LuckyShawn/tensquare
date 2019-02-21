@@ -1,6 +1,8 @@
 package com.tensquare.user.controller;
+import java.util.HashMap;
 import java.util.Map;
 
+import com.tensquare.user.interceptor.JwtInterceptor;
 import entity.ResultEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +19,8 @@ import com.tensquare.user.service.UserService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import util.JwtUtil;
+
 /**
  * 控制器层
  * @author Administrator
@@ -30,6 +34,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	@Autowired
+	private JwtInterceptor jwtInterceptor;
+
 	/**
 	 * 用户登陆
 	 * @param map
@@ -41,7 +51,13 @@ public class UserController {
 		if(user == null){
 			return new Result(false,ResultEnum.LOGIN_ERROR.getCode(),ResultEnum.LOGIN_ERROR.getMessage());
 		}
-		return new Result(true,ResultEnum.OK.getCode(),ResultEnum.OK.getMessage());
+		//创建token并返回信息给调用方
+		String token = jwtUtil.createJWT(user.getId(),user.getNickname(),"user");
+		Map<String,String> result = new HashMap<>();
+		result.put("token",token);
+		result.put("nickname",user.getNickname());
+		result.put("avatar",user.getAvatar());
+		return new Result(true,ResultEnum.OK.getCode(),ResultEnum.OK.getMessage(),result);
 	}
 
 	/**
@@ -72,6 +88,7 @@ public class UserController {
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
+		System.out.println(jwtInterceptor);
 		return new Result(true,StatusCode.OK,"查询成功",userService.findAll());
 	}
 	

@@ -208,23 +208,10 @@ public class UserService {
      */
     public void deleteById(String id) {
         //删除钱需要验证权限
-       String header = request.getHeader("Authorization");
-       if(StringUtils.isEmpty(header)){
-           throw new RuntimeException("权限不足");
-       }
-       if(!header.startsWith("shawn ")){
-           throw new RuntimeException("权限不足");
-       }
-       String token = header.substring(6);
-       try {
-           Claims claims = jwtUtil.parseJWT(token);
-           String roles = (String) claims.get("roles");
-           if(roles == null || !"admin".equals(roles)){
-               throw new RuntimeException("权限不足");
-           }
-       }catch (Exception e){
-           throw new RuntimeException("权限不足");
-       }
+        String claims_admin = (String) request.getAttribute("claims_admin");
+        if(StringUtils.isEmpty(claims_admin)){
+            throw new RuntimeException("权限不足");
+        }
         userDao.deleteById(id);
     }
 

@@ -1,4 +1,4 @@
-package com.tensquare.user.interceptor;
+package com.tensquare.qa.interceptor;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,6 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
     static {
         System.out.print("load class JwtInterceptor");
     }
-
-    @Autowired
-    private JwtUtil jwtUtil;
 
     @Autowired
     private InterceptorUtil interceptorUtil;
