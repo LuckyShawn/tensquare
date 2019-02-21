@@ -1,5 +1,4 @@
 package com.tensquare.article.controller;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tensquare.article.pojo.Article;
 import com.tensquare.article.service.ArticleService;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
-import sun.misc.Request;
+import com.tensquare.entity.PageResult;
+import com.tensquare.entity.Result;
+import com.tensquare.entity.StatusCode;
 
 /**
  * 控制器层

@@ -3,13 +3,14 @@ package com.tensquare.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import util.IdWorker;
-import util.InterceptorUtil;
-import util.JwtUtil;
+import com.tensquare.util.IdWorker;
+import com.tensquare.util.InterceptorUtil;
+import com.tensquare.util.JwtUtil;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = {"com.tensquare.interceptor","com.tensquare"})
+@ComponentScan(basePackages = {"com.tensquare"})  //如果需要跨模块注入其他模块的bean,需要制定包扫描路径
 public class UserApplication {
 
     public static void main(String[] args) throws Exception{

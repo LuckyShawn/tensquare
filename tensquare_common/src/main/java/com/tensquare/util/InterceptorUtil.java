@@ -1,8 +1,7 @@
-package util;
+package com.tensquare.util;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;

@@ -2,9 +2,9 @@ package com.tensquare.spit.controller;
 
 import com.tensquare.spit.pojo.Spit;
 import com.tensquare.spit.service.SpitService;
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.entity.PageResult;
+import com.tensquare.entity.Result;
+import com.tensquare.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.redis.core.RedisTemplate;

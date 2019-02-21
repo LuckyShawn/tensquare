@@ -1,13 +1,13 @@
 package com.tensquare.qa;
-import com.tensquare.qa.config.InterceptorConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import util.IdWorker;
-import util.InterceptorUtil;
-import util.JwtUtil;
+import org.springframework.context.annotation.ComponentScan;
+import com.tensquare.util.IdWorker;
+import com.tensquare.util.JwtUtil;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.tensquare"})  //如果需要跨模块注入其他模块的bean,需要制定包扫描路径
 public class QaApplication {
 
 	public static void main(String[] args) {
@@ -24,8 +24,4 @@ public class QaApplication {
 		return new JwtUtil();
 	}
 
-	@Bean
-	public InterceptorUtil interceptorUtil(){
-		return new InterceptorUtil();
-	}
 }

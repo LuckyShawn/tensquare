@@ -5,7 +5,7 @@ import com.tensquare.article.pojo.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import util.IdWorker;
+import com.tensquare.util.IdWorker;
 
 /**
  * @Description TODO

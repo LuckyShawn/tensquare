@@ -1,4 +1,4 @@
-package entity;
+package com.tensquare.entity;
 
 /**
  * @Description 状态码实体类

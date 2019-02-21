@@ -1,4 +1,4 @@
-package util;
+package com.tensquare.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

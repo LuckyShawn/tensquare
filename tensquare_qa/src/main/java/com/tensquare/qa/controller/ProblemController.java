@@ -2,7 +2,7 @@ package com.tensquare.qa.controller;
 
 import java.util.Map;
 
-import entity.ResultEnum;
+import com.tensquare.entity.ResultEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tensquare.qa.pojo.Problem;
 import com.tensquare.qa.service.ProblemService;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import com.tensquare.entity.PageResult;
+import com.tensquare.entity.Result;
+import com.tensquare.entity.StatusCode;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,12 +1,9 @@
-package com.tensquare.user.interceptor;
+package com.tensquare.interceptor;
 
-import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import util.InterceptorUtil;
-import util.JwtUtil;
+import com.tensquare.util.InterceptorUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +15,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Component
 public class JwtInterceptor extends HandlerInterceptorAdapter {
-    static {
-        System.out.print("load class JwtInterceptor");
-    }
-
-    @Autowired
-    private JwtUtil jwtUtil;
 
     @Autowired
     private InterceptorUtil interceptorUtil;

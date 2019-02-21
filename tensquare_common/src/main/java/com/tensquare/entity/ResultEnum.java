@@ -1,4 +1,4 @@
-package entity;
+package com.tensquare.entity;
 
 import lombok.Getter;
 
