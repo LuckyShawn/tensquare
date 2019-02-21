@@ -13,7 +13,7 @@ import com.tensquare.util.JwtUtil;
 @ComponentScan(basePackages = {"com.tensquare"})  //如果需要跨模块注入其他模块的bean,需要制定包扫描路径
 public class UserApplication {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args){
         SpringApplication.run(UserApplication.class, args);
     }
 
