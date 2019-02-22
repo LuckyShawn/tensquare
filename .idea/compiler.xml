@@ -9,8 +9,8 @@
         <module name="tensquare_article" />
         <module name="tensquare_base" />
         <module name="tensquare_common" />
-        <module name="tensquare_eureka" />
         <module name="tensquare_eureka_server" />
+        <module name="tensquare_friend" />
         <module name="tensquare_gathering" />
         <module name="tensquare_qa" />
         <module name="tensquare_recruit" />
@@ -22,6 +22,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo" target="1.8" />
+      <module name="tensquare_eureka" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

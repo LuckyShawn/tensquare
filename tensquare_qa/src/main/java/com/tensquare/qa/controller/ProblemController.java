@@ -2,7 +2,9 @@ package com.tensquare.qa.controller;
 
 import java.util.Map;
 
+import com.netflix.discovery.converters.Auto;
 import com.tensquare.entity.ResultEnum;
+import com.tensquare.qa.client.BaseClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
@@ -37,6 +39,15 @@ public class ProblemController {
 
 	@Autowired
 	private HttpServletRequest request;
+
+	@Autowired
+	private BaseClient baseClient;
+
+	@RequestMapping(value = "/label/{labelId}",method = RequestMethod.GET)
+	public Result fingById(@PathVariable String labelId){
+		Result result = baseClient.fingById(labelId);
+		return result;
+	}
 
 	/**
 	 *  最新问答列表

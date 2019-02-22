@@ -16,3 +16,9 @@ spring:
   data:
    mongodb:
     host: 47.107.183.79
+eureka:
+  client:
+    service-url:
+     defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true

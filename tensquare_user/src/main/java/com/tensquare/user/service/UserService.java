@@ -25,6 +25,7 @@ import com.tensquare.util.IdWorker;
 import com.tensquare.user.dao.UserDao;
 import com.tensquare.user.pojo.User;
 import com.tensquare.util.JwtUtil;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务层
@@ -56,6 +57,25 @@ public class UserService {
     private JwtUtil jwtUtil;
 
 
+    /**
+     * 修改粉丝数
+     * @param userId
+     * @param num
+     */
+    @Transactional
+    public void incFanscount(String userId,Integer num){
+        userDao.incFanscount(userId,num);
+    }
+
+    /**
+     * 修改关注数
+     * @param userId
+     * @param num
+     */
+    @Transactional
+    public void incFollowcount(String userId,Integer num){
+        userDao.incFollowcount(userId,num);
+    }
 
     /**
      * 根据手机号和密码查询用户 并匹配密码
@@ -63,7 +83,6 @@ public class UserService {
      * @param password
      * @return
      */
-
     public User findByMobileAndPassword(String mobile, String password){
        User user = userDao.findByMobile(mobile);
        if(bCryptPasswordEncoder.matches(password,user.getPassword())){
@@ -106,6 +125,7 @@ public class UserService {
      * @param user 用户
      * @param code 用户填写的验证码
      */
+    @Transactional
     public void add(User user, String code) {
         //判断验证码是否正确
         String syscode = (String) redisTemplate.opsForValue().get("SmsCode_" + user.getMobile());

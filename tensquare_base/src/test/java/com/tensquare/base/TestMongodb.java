@@ -34,7 +34,7 @@ public class TestMongodb {
 
         //添加记录 { "_id" : "5", "content" : "我还是没有想明白到底为啥出错", "userid" : "1012", "nickname" : "小明", "visits" : 5 }
         Map map = new HashMap();
-        map.put("_id","5");
+        map.put("_id","6");
         map.put("content","这个是我用java代码新添加的文档");
         map.put("userid","1015");
         map.put("nickname","shawn");

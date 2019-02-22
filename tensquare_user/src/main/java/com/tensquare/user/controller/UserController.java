@@ -38,6 +38,28 @@ public class UserController {
 
 
 	/**
+	 * 修改粉丝数
+	 * @param userId
+	 * @param num
+	 */
+	@RequestMapping(value = "/incfanscount/{userId}/{num}",method = RequestMethod.PUT)
+	public int incFanscount(@PathVariable(value = "userId") String userId,@PathVariable(value = "num")Integer num){
+		userService.incFanscount(userId,num);
+		return 1;
+	}
+
+	/**
+	 * 修改关注数
+	 * @param userId
+	 * @param num
+	 */
+	@RequestMapping(value = "/incfollow/{userId}/{num}",method = RequestMethod.PUT)
+	public int incFollowcount(@PathVariable(value = "userId") String userId,@PathVariable(value = "num")Integer num){
+		userService.incFollowcount(userId,num);
+		return 1;
+	}
+
+	/**
 	 * 用户登陆
 	 * @param map
 	 * @return
