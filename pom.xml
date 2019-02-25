@@ -19,6 +19,8 @@
         <module>tensquare_eureka_server</module>
         <module>tensquare_manager</module>
         <module>tensquare_web</module>
+        <module>tensquare-config</module>
+        <module>tensquare_config</module>
     </modules>
     <packaging>pom</packaging>
 

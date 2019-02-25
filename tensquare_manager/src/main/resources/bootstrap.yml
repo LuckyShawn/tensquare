@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      name: manager
+      profile: dev
+      label: master
+      uri: http://127.0.0.1:9013
+    loadbalancer:
+      retry:
+        enabled: false

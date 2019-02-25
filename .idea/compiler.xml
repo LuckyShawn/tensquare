@@ -9,6 +9,7 @@
         <module name="tensquare_article" />
         <module name="tensquare_base" />
         <module name="tensquare_common" />
+        <module name="tensquare_config" />
         <module name="tensquare_eureka_server" />
         <module name="tensquare_friend" />
         <module name="tensquare_gathering" />

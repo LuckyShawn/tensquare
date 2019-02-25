@@ -14,6 +14,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/tensquare-config/pom.xml" />
         <option value="$PROJECT_DIR$/tensquare_eureka/pom.xml" />
       </set>
     </option>
