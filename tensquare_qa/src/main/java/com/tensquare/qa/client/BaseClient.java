@@ -1,6 +1,7 @@
 package com.tensquare.qa.client;
 
 import com.tensquare.entity.Result;
+import com.tensquare.qa.client.impl.BaseClientImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Author shawn
  * @create 2019/2/22 0022
  */
-@FeignClient(name = "tensquare-base")
+@FeignClient(name = "tensquare-base",fallback = BaseClientImpl.class)
 public interface BaseClient {
 
     /**

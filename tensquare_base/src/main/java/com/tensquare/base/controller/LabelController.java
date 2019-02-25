@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * @Description 标签控制层
@@ -21,6 +23,8 @@ public class LabelController {
     @Autowired
     private LabelService labelService;
 
+    @Autowired
+    private HttpServletRequest request;
     /**
      * 查询全部列表
      * @return
@@ -38,7 +42,7 @@ public class LabelController {
      */
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public Result fingById(@PathVariable String id){
-        return new Result(true,StatusCode.OK,"查询成功",labelService.findById(id));
+        return new Result(true,StatusCode.OK,"查询成功"+request.getServerPort(),labelService.findById(id));
     }
 
     /**

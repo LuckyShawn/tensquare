@@ -17,6 +17,8 @@
         <module>tensquare_user</module>
         <module>tensquare_recruit</module>
         <module>tensquare_eureka_server</module>
+        <module>tensquare_manager</module>
+        <module>tensquare_web</module>
     </modules>
     <packaging>pom</packaging>
 

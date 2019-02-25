@@ -12,11 +12,13 @@
         <module name="tensquare_eureka_server" />
         <module name="tensquare_friend" />
         <module name="tensquare_gathering" />
+        <module name="tensquare_manager" />
         <module name="tensquare_qa" />
         <module name="tensquare_recruit" />
         <module name="tensquare_sms" />
         <module name="tensquare_spit" />
         <module name="tensquare_user" />
+        <module name="tensquare_web" />
         <module name="tensuqare_search" />
       </profile>
     </annotationProcessing>
