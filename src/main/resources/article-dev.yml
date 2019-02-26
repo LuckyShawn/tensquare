@@ -8,6 +8,10 @@ spring:
     url: jdbc:mysql://47.107.183.79:3306/tensquare_article?characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
+  rabbitmq:
+    host: 47.107.183.79
+    password: shawn
+    username: shawn
   jpa: 
     database: MySQL
     show-sql: true

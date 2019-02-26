@@ -4,6 +4,8 @@ import java.util.Map;
 
 import com.tensquare.entity.ResultEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +30,7 @@ import com.tensquare.util.JwtUtil;
 @RestController
 @CrossOrigin
 @RequestMapping("/user")
+@RefreshScope
 public class UserController {
 
 	@Autowired
@@ -35,6 +38,9 @@ public class UserController {
 
 	@Autowired
 	private JwtUtil jwtUtil;
+
+	@Value("${user.name}")
+	private String name;
 
 
 	/**
@@ -107,6 +113,7 @@ public class UserController {
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
+		System.out.println("user.name:"+name);
 		return new Result(true,StatusCode.OK,"查询成功",userService.findAll());
 	}
 	

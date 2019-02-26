@@ -17,9 +17,15 @@ spring:
   database: MySQL
   show-sql: true
   generate-ddl: true
+ rabbitmq:
+  host: 47.107.183.79
+  password: shawn
+  username: shawn
 eureka:
   client:
     service-url:
      defaultZone: http://127.0.0.1:8761/eureka/
   instance:
     prefer-ip-address: true
+base:
+  name: myBaseUpdate

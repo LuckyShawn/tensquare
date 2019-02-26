@@ -1,8 +1,12 @@
 server:
-  port: 9012
+  port: 9011
 spring:
   application:
-    name: tensquare-web
+    name: tensquare-manager
+  rabbitmq:
+    host: 47.107.183.79
+    password: shawn
+    username: shawn
 eureka:
   client:
     service-url:
@@ -15,7 +19,7 @@ zuul:
     tensquare-article: #文章
       path: /article/**
       serviceId: tensquare-article
-    tensquare-gathering: #活动
+    tensquare-gathering: #活动 
       path: /gathering/**
       serviceId: tensquare-gathering
     tensquare-friend: #交友
@@ -33,5 +37,9 @@ zuul:
     tensquare-user: #用户
       path: /user/** #配置请求URL的请求规则
       serviceId: tensquare-user #指定Eureka注册中心中的服务id
+jwt:
+  config:
+    key: shawn
+
 
 

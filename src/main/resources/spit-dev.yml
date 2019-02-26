@@ -3,6 +3,10 @@ server:
 spring:
  application:
   name: tensquare-spit #指定服务名
+ rabbitmq:
+  host: 47.107.183.79
+  password: shawn
+  username: shawn
  data:
   mongodb:
    host: 47.107.183.79

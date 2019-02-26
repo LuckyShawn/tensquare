@@ -6,3 +6,10 @@ eureka:
     fetch-registry: false         #是否从Eureka中获取注册信息
     service-url:                   #Eureka客户端与Eureka服务端进行交互的地址
      defaultZone: http://127.0.0.1:${server.port}/eureka/
+spring:
+  application:
+    name: tensquare-eureka
+  rabbitmq:
+    host: 47.107.183.79
+    password: shawn
+    username: shawn

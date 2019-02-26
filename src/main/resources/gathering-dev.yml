@@ -11,3 +11,7 @@ spring:
   jpa: 
     database: MySQL
     show-sql: true
+  rabbitmq:
+    host: 47.107.183.79
+    password: shawn
+    username: shawn

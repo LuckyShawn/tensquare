@@ -6,6 +6,8 @@ import com.tensquare.entity.PageResult;
 import com.tensquare.entity.Result;
 import com.tensquare.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,18 +21,23 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/label")
+@RefreshScope
 public class LabelController {
     @Autowired
     private LabelService labelService;
 
     @Autowired
     private HttpServletRequest request;
+
+    @Value("${base.name}")
+    private String name;
     /**
      * 查询全部列表
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
     public Result findAll(){
+        System.out.println("base.name:"+name);
         String header = request.getHeader("Authorization");
         System.out.println(header);
         return new Result(true,StatusCode.OK,"查询成功",

@@ -1,11 +1,11 @@
 server: 
-  port: 9008
+  port: 9003
 spring: 
   application:  
-    name: tensquare-user #指定服务名
+    name: tensquare-qa #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.107.183.79:3306/tensquare_user?useSSL=false&characterEncoding=UTF-8
+    url: jdbc:mysql://47.107.183.79:3306/tensquare_qa?useSSL=false&characterEncoding=UTF8
     username: root
     password: 123456
   jpa: 
@@ -15,8 +15,6 @@ spring:
     host: 47.107.183.79
     password: shawn
     username: shawn
-  redis:
-    host: 47.107.183.79
 jwt:
  config:
   key: shawn
@@ -27,4 +25,8 @@ eureka:
      defaultZone: http://127.0.0.1:8761/eureka/
   instance:
     prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+
 
